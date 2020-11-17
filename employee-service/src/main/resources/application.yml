@@ -1,0 +1,25 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: employee-service
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: hr
+    password: hr
+
+mybatis:
+  type-aliases-package: cn.kgc.personnel.common.pojo
+
+logging:
+  level:
+    cn.kgc.movie.service.mapper: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+
