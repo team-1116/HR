@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kgc.employee.service.mapper.EmployeesMapper">
+
+    <resultMap id="empMap" type="Employees">
+        <id property="employeesID" column="EMPLOYEE_ID"/>
+        <result property="firstName" column="FIRST_NAME"/>
+        <result property="lastName" column="LAST_NAME"/>
+        <result property="Emall" column="EMAIL"/>
+        <result property="phoneNumber" column="PHONE_NUMBER"/>
+        <result property="hireDate" column="HIRE_DATE"/>
+        <result property="jobId" column="JOB_ID"/>
+        <result property="salary" column="SALARY"/>
+        <result property="commissionPct" column="COMMISSION_PCT"/>
+        <result property="managerId" column="MANAGER_ID"/>
+        <result property="departmentId" column="DEPARTMENT_ID"/>
+        <association property="departments" javaType="Departments">
+            <id property="departmentId" column="DEPARTMENT_ID"/>
+            <result property="departmentName" column="DEPARTMENT_NAME"/>
+        </association>
+    </resultMap>
+
+    <!--根据员工id查询员工信息-->
+    <select id="selectEmployees" parameterType="integer" resultMap="empMap">
+        select e.*,d.DEPARTMENT_NAME from Employees e,Departments d
+        where e.DEPARTMENT_ID = d.DEPARTMENT_ID
+        and EMPLOYEE_ID = #{employeesID}
+
+    </select>
+
+    <!--根据员工id修改员工信息-->
+    <update id="updateEmployees" parameterType="Employees">
+        UPDATE Employees
+        <set>
+            <if test="Emall != null and Emall != ''">
+                EMAIL = #{Emall,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR}
+            </if>
+        </set>
+
+        WHERE EMPLOYEE_ID = #{employeesID}
+    </update>
+
+</mapper>

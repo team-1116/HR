@@ -43,7 +43,7 @@ public class Employees {
         /*
             员工目前从事的职位，与job表关联
          */
-        private  Integer jobId;
+        private  String jobId;
 
         /*
               员工月薪
@@ -64,8 +64,21 @@ public class Employees {
             员工所在部门id;外键到department_id
             部门表的列
          */
-    
-    private Integer departmentId;
+        private Integer departmentId;
+
+        /*
+            部门对象
+         */
+        private Departments departments;
+
+    public Departments getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Departments departments) {
+        this.departments = departments;
+    }
+
 
     public Integer getEmployeesID() {
         return employeesID;
@@ -115,11 +128,11 @@ public class Employees {
         this.hireDate = hireDate;
     }
 
-    public Integer getJobId() {
+    public String getJobId() {
         return jobId;
     }
 
-    public void setJobId(Integer jobId) {
+    public void setJobId(String jobId) {
         this.jobId = jobId;
     }
 
