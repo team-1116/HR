@@ -33,9 +33,5 @@ public class EmployeesServiceImpl implements EmployeesService {
         return employeesMapper.updateEmployees(employees);
     }
 
-    //本部门申请调岗
-    @Override
-    public Integer setJob(Employees employees) {
-        return employeesMapper.updateJob(employees);
-    }
+
 }

@@ -11,5 +11,6 @@ public interface JobsService {
     //根据员工id查询所在部门的工作岗位
     List<Jobs> selectJobs(Integer employeesID);
 
-
+    /*//本部门申请调岗
+    Integer setJob(Employees employees);*/
 }

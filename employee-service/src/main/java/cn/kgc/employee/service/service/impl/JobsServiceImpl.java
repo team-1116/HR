@@ -2,6 +2,7 @@ package cn.kgc.employee.service.service.impl;
 
 import cn.kgc.employee.service.mapper.JobsMapper;
 import cn.kgc.employee.service.service.JobsService;
+import cn.kgc.personnel.common.pojo.Employees;
 import cn.kgc.personnel.common.pojo.Jobs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,10 @@ public class JobsServiceImpl implements JobsService {
     public List<Jobs> selectJobs(Integer employeesID) {
         return jobsMapper.selectJobs(employeesID);
     }
+
+    /*//本部门申请调岗
+    @Override
+    public Integer setJob(Employees employees) {
+        return jobsMapper.updateJob(employees);
+    }*/
 }

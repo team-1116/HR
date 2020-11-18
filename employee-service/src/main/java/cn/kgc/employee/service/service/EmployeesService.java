@@ -16,6 +16,5 @@ public interface EmployeesService {
     */
     Integer setEmployees(Employees employees);
 
-    //本部门申请调岗
-    Integer setJob(Employees employees);
+
 }

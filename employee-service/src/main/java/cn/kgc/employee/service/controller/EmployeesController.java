@@ -32,10 +32,5 @@ public class EmployeesController {
         return employeesService.setEmployees(employees);
     }
 
-    //本部门申请调岗
-    @PutMapping("/employee/{employeesID}")
-    public Integer setJob(@PathVariable("employeesID") Integer employeesID,
-                          @RequestBody Employees employees) {
-        return employeesService.setJob(employees);
-    }
+
 }

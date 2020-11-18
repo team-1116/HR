@@ -16,6 +16,5 @@ public interface EmployeesMapper {
     */
     Integer updateEmployees(Employees employees);
 
-    //本部门申请调岗
-    Integer updateJob(Employees employees);
+
 }

@@ -40,14 +40,15 @@
             <if test="phoneNumber != null and phoneNumber != ''">
                 PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR}
             </if>
+            /*提交岗位调动*/
+            <if test="jobId !=null and jobId != ''">
+                JOB_ID = #{jobId,jdbcType=VARCHAR}
+            </if>
         </set>
 
         WHERE EMPLOYEE_ID = #{employeesID}
     </update>
 
-    <!--本部门申请调岗-->
-    <update id="updateJob" parameterType="Employees">
-        update EMPLOYEES set JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
-    </update>
+
 
 </mapper>
