@@ -9,6 +9,11 @@
         <result property="jobTitle" column="JOB_TITLE"/>
     </resultMap>
 
+    <resultMap id="depMap" type="Departments">
+        <id property="departmentId" column="DEPARTMENT_ID"/>
+        <result property="departmentName" column="DEPARTMENT_NAME"/>
+    </resultMap>
+
     <!--根据员工id查询所在部门的工作岗位-->
     <select id="selectJobs" parameterType="integer" resultMap="jobMap">
         select j.JOB_TITLE from Jobs j,Employees e,Departments d
@@ -19,4 +24,19 @@
     <!--<update id="updateJob" parameterType="Employees">
         update EMPLOYEES set JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
     </update>-->
+
+    <!--//查询所有部门-->
+    <select id="selectDeps" resultMap="depMap">
+        SELECT * FROM Departments
+    </select>
+
+    <!--根据部门id查询其包含的工作岗位-->
+    <select id="selectJobsByDepId" resultMap="jobMap" parameterType="integer">
+        select j.* from JOBS j,DEPARTMENTS d where d.DEPARTMENT_ID = #{departmentId}
+    </select>
+
+    <!--跨部门申请调岗-->
+    <update id="updateDepAndJob" parameterType="Employees">
+        update EMPLOYEES set DEPARTMENT_ID=#{departmentId},JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
+    </update>
 </mapper>

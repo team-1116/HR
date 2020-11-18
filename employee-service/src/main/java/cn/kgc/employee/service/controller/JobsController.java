@@ -1,11 +1,11 @@
 package cn.kgc.employee.service.controller;
 
 import cn.kgc.employee.service.service.JobsService;
+import cn.kgc.personnel.common.pojo.Departments;
+import cn.kgc.personnel.common.pojo.Employees;
 import cn.kgc.personnel.common.pojo.Jobs;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +23,26 @@ public class JobsController {
         return jobsService.selectJobs(employeesID);
     }
 
-    /*//本部门申请调岗
+    //查询所有部门
+    @GetMapping("/job")
+    public List<Departments> getDeps() {
+        return jobsService.getDeps();
+    }
+
+    ////根据部门id查询其包含的工作岗位
+    @GetMapping("/job1/{departmentId}")
+    public List<Jobs> getJobsByDepId(@PathVariable("departmentId") Integer departmentId) {
+        return jobsService.getJobsByDepId(departmentId);
+    }
+
+    //跨部门申请调岗
+    @PutMapping("/job/{employeesID}")
+    public Integer setDepAndJob(@PathVariable("employeesID") Integer employeesID,
+                                @RequestBody Employees employees) {
+        return jobsService.setDepAndJob(employees);
+    }
+
+    /*本部门申请调岗
     @PutMapping("/job/{employeesID}")
     public Integer setJob(@PathVariable("employeesID") Integer employeesID,
                           @RequestBody Employees employees) {
