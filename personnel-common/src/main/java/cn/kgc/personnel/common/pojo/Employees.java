@@ -64,8 +64,21 @@ public class Employees {
             员工所在部门id;外键到department_id
             部门表的列
          */
-    
-    private Integer departmentId;
+        private Integer departmentId;
+
+        /*
+            部门对象
+         */
+        private Departments departments;
+
+    public Departments getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Departments departments) {
+        this.departments = departments;
+    }
+
 
     public Integer getEmployeesID() {
         return employeesID;
