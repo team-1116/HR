@@ -9,7 +9,7 @@ package cn.kgc.personnel.common.pojo;
  * @Version 1.0
  **/
 /*
-    用户表
+    用户表的
  */
 public class User {
     /*
