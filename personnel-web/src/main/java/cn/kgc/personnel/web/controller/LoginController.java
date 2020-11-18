@@ -4,10 +4,7 @@ import cn.kgc.personnel.common.pojo.User;
 import cn.kgc.personnel.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,8 +22,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-
-    @RequestMapping(value = "/toLogin")
+    @RequestMapping("/goLogin")
     public String tologin(){
         return "login";
     }
@@ -48,4 +44,9 @@ public class LoginController {
         }
     }
 
+
+    @RequestMapping("/goindex")
+    public String goindex(){
+        return "index";
+    }
 }

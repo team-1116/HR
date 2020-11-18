@@ -7,4 +7,12 @@
        SELECT * FROM "USER"
       WHERE USER_NAME=#{userName}
     </select>
+
+    <resultMap id="UserMap" type="User">
+        <id property="UserId" column="USER_ID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="emplpyeesId" column="EMPLPYEES_ID"/>
+
+    </resultMap>
 </mapper>
