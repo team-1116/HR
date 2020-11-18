@@ -8,7 +8,7 @@ spring:
   freemarker:
     cache: false
     content-type: text/html
-    suffix: .yml
+    suffix: .ftl
     charset: UTF-8
 
   main:
