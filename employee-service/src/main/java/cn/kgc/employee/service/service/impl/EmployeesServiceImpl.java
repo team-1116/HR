@@ -32,4 +32,10 @@ public class EmployeesServiceImpl implements EmployeesService {
     public Integer setEmployees(Employees employees) {
         return employeesMapper.updateEmployees(employees);
     }
+
+    //本部门申请调岗
+    @Override
+    public Integer setJob(Employees employees) {
+        return employeesMapper.updateJob(employees);
+    }
 }

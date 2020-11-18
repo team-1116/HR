@@ -13,6 +13,7 @@ public class EmployeesController {
     @Autowired
     private EmployeesService employeesService;
 
+
     /*
         根据员工id查询员工信息
     */
@@ -29,5 +30,12 @@ public class EmployeesController {
     public Integer setEmployees(@PathVariable("employeesID") Integer employeesID,
                                 @RequestBody Employees employees) {
         return employeesService.setEmployees(employees);
+    }
+
+    //本部门申请调岗
+    @PutMapping("/employee/{employeesID}")
+    public Integer setJob(@PathVariable("employeesID") Integer employeesID,
+                          @RequestBody Employees employees) {
+        return employeesService.setJob(employees);
     }
 }

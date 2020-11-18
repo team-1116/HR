@@ -45,4 +45,9 @@
         WHERE EMPLOYEE_ID = #{employeesID}
     </update>
 
+    <!--本部门申请调岗-->
+    <update id="updateJob" parameterType="Employees">
+        update EMPLOYEES set JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
+    </update>
+
 </mapper>

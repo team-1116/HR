@@ -15,4 +15,7 @@ public interface EmployeesService {
         根据员工id修改员工信息
     */
     Integer setEmployees(Employees employees);
+
+    //本部门申请调岗
+    Integer setJob(Employees employees);
 }
