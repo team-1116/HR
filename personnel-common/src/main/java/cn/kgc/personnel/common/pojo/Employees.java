@@ -43,7 +43,7 @@ public class Employees {
         /*
             员工目前从事的职位，与job表关联
          */
-        private  Integer jobId;
+        private  String jobId;
 
         /*
               员工月薪
@@ -128,11 +128,11 @@ public class Employees {
         this.hireDate = hireDate;
     }
 
-    public Integer getJobId() {
+    public String getJobId() {
         return jobId;
     }
 
-    public void setJobId(Integer jobId) {
+    public void setJobId(String jobId) {
         this.jobId = jobId;
     }
 
