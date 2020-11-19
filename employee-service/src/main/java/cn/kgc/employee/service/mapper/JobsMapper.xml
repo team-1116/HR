@@ -12,6 +12,7 @@
     <resultMap id="depMap" type="Departments">
         <id property="departmentId" column="DEPARTMENT_ID"/>
         <result property="departmentName" column="DEPARTMENT_NAME"/>
+
     </resultMap>
 
     <!--根据员工id查询所在部门的工作岗位-->
@@ -39,4 +40,25 @@
     <update id="updateDepAndJob" parameterType="Employees">
         update EMPLOYEES set DEPARTMENT_ID=#{departmentId},JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
     </update>
+
+
+
+    <select id="selectJob" parameterType="Employees" resultMap="jobsMap">
+        select j.JOB_TITLE,d.DEPARTMENT_NAME from JOBS j,DEPARTMENTS d,EMPLOYEES e
+        where e.DEPARTMENT_ID = d.DEPARTMENT_ID
+        and e.JOB_ID = j.JOB_ID
+        and e.EMPLOYEE_ID = #{employeesID}
+    </select>
+    
+    <resultMap id="jobsMap" type="Employees">
+        <id property="employeesID" column="EMPLOYEE_ID"/>
+        <collection property="departments" ofType="Departments">
+            <id property="departmentId" column="DEPARTMENT_ID"/>
+            <result property="departmentName" column="DEPARTMENT_NAME"/>
+            <association property="jobs" javaType="Jobs">
+                <id property="jobId" column="JOB_ID"/>
+                <result property="jobTitle" column="JOB_TITLE"/>
+            </association>
+        </collection>
+    </resultMap>
 </mapper>

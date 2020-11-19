@@ -71,6 +71,16 @@ public class Employees {
          */
         private Departments departments;
 
+        private Jobs jobs;
+
+    public Jobs getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(Jobs jobs) {
+        this.jobs = jobs;
+    }
+
     public Departments getDepartments() {
         return departments;
     }

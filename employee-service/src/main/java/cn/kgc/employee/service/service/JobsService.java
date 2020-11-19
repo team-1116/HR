@@ -24,4 +24,7 @@ public interface JobsService {
 
     //跨部门申请调岗
     Integer setDepAndJob(Employees employees);
+
+
+    Jobs getJob(Employees employees);
 }

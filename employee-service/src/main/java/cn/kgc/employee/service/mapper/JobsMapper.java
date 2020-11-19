@@ -13,6 +13,9 @@ public interface JobsMapper {
     //根据员工id查询所在部门的工作岗位
     List<Jobs> selectJobs(Integer employeesID);
 
+    Jobs selectJob(Employees employees);
+
+
     //查询所有部门
     List<Departments> selectDeps();
 

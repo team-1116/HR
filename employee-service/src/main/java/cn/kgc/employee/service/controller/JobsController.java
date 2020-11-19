@@ -42,10 +42,11 @@ public class JobsController {
         return jobsService.setDepAndJob(employees);
     }
 
-    /*本部门申请调岗
-    @PutMapping("/job/{employeesID}")
-    public Integer setJob(@PathVariable("employeesID") Integer employeesID,
-                          @RequestBody Employees employees) {
-        return jobsService.setJob(employees);
+
+    /*@GetMapping("job2/{employeesID}")
+    public Jobs getJob(@PathVariable("employeesID") Integer employeesID,
+                       @RequestBody Employees employees) {
+        Jobs job = jobsService.getJob(employees);
+        return job;
     }*/
 }

@@ -6,7 +6,7 @@ spring:
     name: employee-service
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521:ORCL1
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
     username: hr
     password: hr
 

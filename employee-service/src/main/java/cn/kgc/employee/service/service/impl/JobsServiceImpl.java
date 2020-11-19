@@ -42,6 +42,11 @@ public class JobsServiceImpl implements JobsService {
         return jobsMapper.updateDepAndJob(employees);
     }
 
+    @Override
+    public Jobs getJob(Employees employees) {
+        return jobsMapper.selectJob(employees);
+    }
+
     /*//本部门申请调岗
     @Override
     public Integer setJob(Employees employees) {
