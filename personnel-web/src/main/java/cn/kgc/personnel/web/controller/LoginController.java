@@ -1,11 +1,12 @@
 package cn.kgc.personnel.web.controller;
 
+import cn.kgc.personnel.common.pojo.Employees;
 import cn.kgc.personnel.common.pojo.User;
+import cn.kgc.personnel.web.service.EmployeesService;
 import cn.kgc.personnel.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +22,8 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private EmployeesService employeesService;
 
     @RequestMapping("/goLogin")
     public String tologin(){
@@ -39,7 +42,11 @@ public class LoginController {
         }else if (!user.getPassword().equals(password)){
             return "nop";
         }else {
-            session.setAttribute("user",user);
+            System.out.println("用户id:"+user.getEmplpyeesId());
+            Integer id=user.getEmplpyeesId();
+            //登录成功 传入个人基本信息到session
+            Employees employees=employeesService.getEmployees(id);
+            session.setAttribute("employees",employees);
             return "ok";
         }
     }
