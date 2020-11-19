@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kgc.employee.service.mapper.JobsMapper">
+
+    <resultMap id="jobMap" type="Jobs">
+        <id property="jobId" column="JOB_ID"/>
+        <result property="jobTitle" column="JOB_TITLE"/>
+    </resultMap>
+
+    <resultMap id="depMap" type="Departments">
+        <id property="departmentId" column="DEPARTMENT_ID"/>
+        <result property="departmentName" column="DEPARTMENT_NAME"/>
+    </resultMap>
+
+    <!--根据员工id查询所在部门的工作岗位-->
+    <select id="selectJobs" parameterType="integer" resultMap="jobMap">
+        select j.JOB_TITLE from Jobs j,Employees e,Departments d
+        where e.EMPLOYEE_ID = #{employeesID} and e.DEPARTMENT_ID = d.DEPARTMENT_ID
+    </select>
+
+    <!--本部门申请调岗-->
+    <!--<update id="updateJob" parameterType="Employees">
+        update EMPLOYEES set JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
+    </update>-->
+
+    <!--//查询所有部门-->
+    <select id="selectDeps" resultMap="depMap">
+        SELECT * FROM Departments
+    </select>
+
+    <!--根据部门id查询其包含的工作岗位-->
+    <select id="selectJobsByDepId" resultMap="jobMap" parameterType="integer">
+        select j.* from JOBS j,DEPARTMENTS d where d.DEPARTMENT_ID = #{departmentId}
+    </select>
+
+    <!--跨部门申请调岗-->
+    <update id="updateDepAndJob" parameterType="Employees">
+        update EMPLOYEES set DEPARTMENT_ID=#{departmentId},JOB_ID = #{jobId} where EMPLOYEE_ID = #{employeesID}
+    </update>
+</mapper>
